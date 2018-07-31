@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+<template>
+	<div>
+		<el-radio v-model="radio7" label="1" border>备选项1</el-radio>
+		<el-radio v-model="radio7" label="2" border>备选项2</el-radio>
+	</div>
+	<div style="margin-top: 20px">
+		<el-radio v-model="radio8" label="1" border size="medium">备选项1</el-radio>
+		<el-radio v-model="radio8" label="2" border size="medium">备选项2</el-radio>
+	</div>
+	<div style="margin-top: 20px">
+	  <el-radio-group v-model="radio9" size="small">
+		<el-radio  label="1" border >备选项1</el-radio>
+		<el-radio  label="2" border disabled >备选项2</el-radio>
+	  </el-radio-group>
+	</div>
+	<div style="margin-top: 20px">
+	  <el-radio-group v-model="radio10" size="mini" disabled>
+		<el-radio  label="1" border >备选项1</el-radio>
+		<el-radio  label="2" border >备选项2</el-radio>
+	  </el-radio-group>
+	</div>
+</template>
+</div>
+<script>
+	var Main = {
+		data (){
+		return  {
+			radio7:'1',
+			radio8:'1',
+			radio9:'1',
+			radio10:'1'
+		};
+	  }
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

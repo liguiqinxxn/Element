@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-steps :active="active" :space="300" finish-status="success">
+		<el-step title="步骤 1"></el-step>
+		<el-step title="步骤 2"></el-step>
+		<el-step title="步骤 3"></el-step>
+	</el-steps>
+<el-button style="margin-top:12px;" @click="next">下一步</el-button>
+
+<el-steps :space="200" :active="1" align-center finish-status="success">
+	<el-step title="已完成" description="这是一段很长很长很长的描述性文字"></el-step>
+	<el-step title="进行中" description="这是一段很长很长很长的描述性文字"></el-step>
+	<el-step title="步骤 3" description="这段就没有那么长了"></el-step>
+</el-steps>
+
+<el-steps :space="200" :active="1" align-center finish-status="success" simple>
+	<el-step title="已完成" description="这是一段很长很长很长的描述性文字"></el-step>
+	<el-step title="进行中" description="这是一段很长很长很长的描述性文字"></el-step>
+	<el-step title="步骤 3" description="这段就没有那么长了"></el-step>
+</el-steps>
+
+<el-steps :space="200" :active="1">
+	<el-step title="步骤 1" icon="el-icon-edit"></el-step>
+	<el-step title="步骤 2" icon="el-icon-upload"></el-step>
+	<el-step title="步骤 3" icon="el-icon-picture"></el-step>
+</el-steps>
+<el-steps :space="200" :active="1" simple>
+	<el-step title="步骤 1" icon="el-icon-edit"></el-step>
+	<el-step title="步骤 2" icon="el-icon-upload"></el-step>
+	<el-step title="步骤 3" icon="el-icon-picture"></el-step>
+</el-steps>
+
+<div style="height:300px;margin-top:12px;">
+	<el-steps direction="vertical" :active="1">
+		<el-step title="步骤 1"></el-step>
+		<el-step title="步骤 2"></el-step>
+		<el-step title="步骤 3"></el-step>
+	</el-steps>
+</div>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				active:0
+			};
+		},
+		methods: {
+			next() {
+				if(this.active++ > 2) this.active = 0;
+			}
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

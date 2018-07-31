@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<div class="block">
+  <span class="demonstration">页数较少时的效果</span>
+  <el-pagination
+  	background
+    layout="prev, pager, next"
+    :total="50">
+  </el-pagination>
+</div>
+
+<div class="block">
+  <span class="demonstration">小型分页</span>
+  <el-pagination
+  	small
+  	background
+    layout="prev, pager, next"
+    :total="50">
+  </el-pagination>
+</div>
+
+<div class="block">
+  <span class="demonstration">大于 7 页时的效果</span>
+  <el-pagination
+    layout="prev, pager, next"
+    :total="1000">
+  </el-pagination>
+</div>
+
+ <div class="block">
+	<span class="demonstration">显示总数</span>
+	<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage1" :page-size="100" layout="total,prev,pager,next" :total="1000"></el-pagination>
+</div>
+
+<div class="block">
+	<span class="demonstration">调整每页显示条数</span>
+	<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage2" :page-sizes="[100,200,300,400]" :page-size="100" layout="sizes,prev,pager,next" :total="1000"></el-pagination>
+</div>
+
+<div class="block">
+	<span class="demonstration">直接前往</span>
+	<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage3" :page-size="100" layout="prev,pager,next,jumper" :total="1000"></el-pagination>
+</div>
+
+<div class="block">
+	<span class="demonstration">完整功能</span>
+	<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage4" :page-sizes="[100,200,300,400]" :page-size="100" layout="total,sizes,prev,pager,next,jumper" :total="400"></el-pagination>
+</div> 
+
+	</template>
+</div>
+
+<script>
+	var Main = {
+		methods:{
+			handleSizeChange(val) {
+				console.log('每页 ${val} 条');
+			},
+			handleCurrentChange(val) {
+				console.log('当前页：${val}');
+			}
+		},
+		data(){
+			return{
+				currentPage1:5,
+				currentPage2:5,
+				currentPage3:5,
+				currentPage4:4
+			};
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

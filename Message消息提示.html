@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-button :plain="true" @click="open">打开消息提示</el-button>
+		<el-button :plain="true" @click="open1">成功</el-button>
+		<el-button :plain="true" @click="open2">警告</el-button>
+		<el-button :plain="true" @click="open3">消息</el-button>
+		<el-button :plain="true" @click="open4">错误</el-button>
+		<el-button :plain="true" @click="openVn">VNode</el-button>
+		<el-button :plain="true" @click="openHTML">使用 HTML 片段</el-button>
+	</template>
+</div>
+<script>
+var Main = {
+	methods:{
+		open() {
+			this.$message('这是一条消息提示');
+		},
+		open1() {
+			this.$message({
+			showClose:true,
+			message:'恭喜你，这是一条成功消息',
+			type:'success'
+		});
+		},
+		open2() {
+			this.$message({
+			showClose:true,
+			message:'警告哦，这是一条警告消息',
+			type:'warning',
+			center:true
+		});
+		},
+		open3() {
+			this.$message('这是一条消息提示');
+		},
+		open4() {
+			this.$message.error('错了哦，这是一条错误消息');
+		},
+		openHTML() {
+			this.$message({
+				dangerouslyUseHTMLString:true,
+				message:"<strong> 这是 <i>HTML</i> 片段</strong>"
+			});
+		},
+		openVn(){
+			const h= this.$createElement;
+			this.$message({
+				message: h('p',null,[
+					h('span',null,'内容可以是'),
+					h('i',{style:'color:teal'},'VNode!')
+					])
+			});
+		}
+	}
+}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

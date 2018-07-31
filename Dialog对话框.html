@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+
+	<el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+	 <span>这是一段信息</span>
+	 <span slot="footer" class="dialog-footer">
+	 	<el-button @click="dialogVisible = false">取消
+	 	</el-button>
+	 	<el-button type="primary" @click="dialogVisible = false">确定</el-button>
+	 </span>
+	 </el-dialog>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+        dialogVisible: false,
+         };
+		},
+		methods:{
+			handleClose(done) {
+				this.$confirm('确认关闭？')
+				  .then(_ =>{
+				  	done();
+				  })
+				  .catch(_ => {});
+			}
+		}
+	};
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

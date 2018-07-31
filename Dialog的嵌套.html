@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-button type="text" @click="outerVisible = true">点击打开外层 Dialog</el-button>
+
+		<el-dialog title="外层 Dialog" :visible.sync="outerVisible">
+		<el-dialog width="30%" title="内层 Dialog" :visible.sync="innerVisible" append-to-body>
+		</el-dialog>
+		<div slot="footer" class="dialog-footer">
+			<el-button @click="outerVisible = false">取消</el-button>
+			<el-button type="primary" @click="innerVisible = true">打开内层 Dialog</el-button>
+		</div>
+		</el-dialog>
+	</template>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				outerVisible: false,
+				innerVisible: false
+			};
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

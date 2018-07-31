@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-dropdown>
+		<span class="el-dropdown-link">下拉菜单<i class="el-icon-arrow-down el-icon--right"></i></span>
+		<el-dropdown-menu slot="dropdown">
+		 	<el-dropdown-item>黄金糕</el-dropdown-item>
+		 	<el-dropdown-item>狮子头</el-dropdown-item>
+		 	<el-dropdown-item>螺蛳粉</el-dropdown-item>
+		 	<el-dropdown-item disabled>双皮奶</el-dropdown-item>
+		 	<el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+		 </el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown>
+		<el-button type="primary">更多菜单<i class="el-icon-arrow-down el-icon--right"></i></el-button>
+		<el-dropdown-menu slot="dropdown">
+			<el-dropdown-item>黄金糕</el-dropdown-item>
+			<el-dropdown-item>狮子头</el-dropdown-item>
+			<el-dropdown-item>螺蛳粉</el-dropdown-item>
+			<el-dropdown-item>双皮奶</el-dropdown-item>
+			<el-dropdown-item>蚵仔煎</el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown split-button type="primary" @click="handleClick">更多菜单
+		<el-dropdown-menu slot="dropdown">
+			<el-dropdown-item>黄金糕</el-dropdown-item>
+			<el-dropdown-item>狮子头</el-dropdown-item>
+			<el-dropdown-item>螺蛳粉</el-dropdown-item>
+			<el-dropdown-item>双皮奶</el-dropdown-item>
+			<el-dropdown-item>蚵仔煎</el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown size="medium" split-button type="primary" @click="handleClick">中等尺寸
+		<el-dropdown-menu slot="dropdown">
+			<el-dropdown-item>黄金糕</el-dropdown-item>
+			<el-dropdown-item>狮子头</el-dropdown-item>
+			<el-dropdown-item>螺蛳粉</el-dropdown-item>
+			<el-dropdown-item>双皮奶</el-dropdown-item>
+			<el-dropdown-item>蚵仔煎</el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown  size="small" split-button type="primary" @click="handleClick">小型尺寸
+		<el-dropdown-menu slot="dropdown">
+			<el-dropdown-item>黄金糕</el-dropdown-item>
+			<el-dropdown-item>狮子头</el-dropdown-item>
+			<el-dropdown-item>螺蛳粉</el-dropdown-item>
+			<el-dropdown-item>双皮奶</el-dropdown-item>
+			<el-dropdown-item>蚵仔煎</el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown size="mini" split-button type="primary" @click="handleClick">超小尺寸
+		<el-dropdown-menu slot="dropdown">
+			<el-dropdown-item>黄金糕</el-dropdown-item>
+			<el-dropdown-item>狮子头</el-dropdown-item>
+			<el-dropdown-item>螺蛳粉</el-dropdown-item>
+			<el-dropdown-item>双皮奶</el-dropdown-item>
+			<el-dropdown-item>蚵仔煎</el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+	
+	<el-row class="block-col-2">
+		<el-col :span="12">
+			<span class="demonstration">hover 激活</span>
+			<el-dropdown>
+			  <span class="el-dropdown-link">下拉菜单<i class="el-icon-arrow-down el-icon--right"></i></span>
+				<el-dropdown-menu slot="dropdown">
+				<el-dropdown-item>黄金糕</el-dropdown-item>
+				<el-dropdown-item>狮子头</el-dropdown-item>
+				<el-dropdown-item>螺蛳粉</el-dropdown-item>
+				<el-dropdown-item>双皮奶</el-dropdown-item>
+				<el-dropdown-item>蚵仔煎</el-dropdown-item>
+				</el-dropdown-menu>
+			</el-dropdown>
+		</el-col>
+
+		<el-col :span="12">
+			<span class="demonstration">click 激活</span>
+			<el-dropdown trigger="click">
+			  <span class="el-dropdown-link">下拉菜单<i class="el-icon-arrow-down el-icon--right"></i></span>
+				<el-dropdown-menu slot="dropdown">
+				<el-dropdown-item>黄金糕</el-dropdown-item>
+				<el-dropdown-item>狮子头</el-dropdown-item>
+				<el-dropdown-item>螺蛳粉</el-dropdown-item>
+				<el-dropdown-item>双皮奶</el-dropdown-item>
+				<el-dropdown-item>蚵仔煎</el-dropdown-item>
+				</el-dropdown-menu>
+			</el-dropdown>
+		</el-col>
+	</el-row>
+
+	<el-dropdown :hide-on-click="false">
+	<span class="el-dropdown-link">下拉菜单<i class="el-icon-arrow-down el-icon--right"></i></span>
+	<el-dropdown-menu slot="dropdown">
+		<el-dropdown-item>黄金糕</el-dropdown-item>
+		<el-dropdown-item>狮子头</el-dropdown-item>
+		<el-dropdown-item>螺蛳粉</el-dropdown-item>
+		<el-dropdown-item disabled>双皮奶</el-dropdown-item>
+		<el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+	</el-dropdown-menu>
+	</el-dropdown>
+
+	<el-dropdown @command="handleCommand">
+	<span class="el-dropdown-link">下拉菜单<i class="el-icon-arrow-down el-icon--right"></i></span>
+	<el-dropdown-menu slot="dropdown">
+		<el-dropdown-item command="a">黄金糕</el-dropdown-item>
+		<el-dropdown-item command="b">狮子头</el-dropdown-item>
+		<el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
+		<el-dropdown-item command="d">双皮奶</el-dropdown-item>
+		<el-dropdown-item command="e">蚵仔煎</el-dropdown-item>
+	</el-dropdown-menu>
+	</el-dropdown>
+</div>
+<style>
+	.el-dropdown-link{
+		cursor: pointer;
+		color: #409eff;
+	}
+	.el-icon-arrow-down{
+		font-size: 12px;
+	}
+</style>
+<script>
+	var Main = {
+		data(){
+			return{
+
+			}
+		},
+		methods:{
+			handleClick(){
+				alert('button click');
+			},
+			handleCommand(command){
+				this.$message('click on item '+command);
+			}
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

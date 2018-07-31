@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+<template>
+  <div>
+    <el-radio-group v-model="radio3">
+      <el-radio-button label="上海"></el-radio-button>
+      <el-radio-button label="北京"></el-radio-button>
+      <el-radio-button label="广州"></el-radio-button>
+      <el-radio-button label="深圳"></el-radio-button>
+    </el-radio-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-radio-group v-model="radio4" size="meudium">
+      <el-radio-button label="上海"></el-radio-button>
+      <el-radio-button label="北京"></el-radio-button>
+      <el-radio-button label="广州"></el-radio-button>
+      <el-radio-button label="深圳"></el-radio-button>
+    </el-radio-group>
+ <div style="margin-top: 20px">
+    <el-radio-group v-model="radio5" size="small">
+      <el-radio-button label="上海"></el-radio-button>
+      <el-radio-button label="北京" disabled ></el-radio-button>
+      <el-radio-button label="广州"></el-radio-button>
+      <el-radio-button label="深圳"></el-radio-button>
+    </el-radio-group>
+  </div>
+ <div style="margin-top: 20px">
+    <el-radio-group v-model="radio6" disabled size="mini">
+      <el-radio-button label="上海"></el-radio-button>
+      <el-radio-button label="北京"></el-radio-button>
+      <el-radio-button label="广州"></el-radio-button>
+      <el-radio-button label="深圳"></el-radio-button>
+    </el-radio-group>
+    </div>
+</template>
+</div>
+
+<style>
+  /*@import url("//unpkg.com/element-ui@2.0.4/lib/theme-chalk/index.css");*/
+</style>
+
+<script>
+  var Main = {
+    data () {
+      return {
+        radio3:'上海',
+        radio4:'上海',
+        radio5:'上海',
+        radio6:'上海'
+      };
+    }
+  }
+  var Ctor = Vue.extend(Main)
+  new Ctor().$mount('#app')
+</script>
+
+</body>
+</html>

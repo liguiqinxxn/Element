@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-tree :data="data2" show-checkbox node-key="id" :default-expanded-keys="[2,3]" :default-checked-keys="[5]" :props="defaultProps">
+	</el-tree>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				data2: [{
+					id:1,
+					label:'一级 1',
+					children:[{
+						id:4,
+						label:'二级 1-1',
+						children:[{
+							id: 9,
+							label:'三级 1-1-1'
+						},{
+							id: 10,
+							label:'三级1-1-2'
+						}]
+					}]
+				},{
+					id:2,
+					label:'一级 2',
+					children:[{
+						id:5,
+						label:'二级2-1',
+						disabled:true
+					},{
+						id:6,
+						label:'二级2-2',
+						disabled:true
+					}]
+				},{
+					id:3,
+					label:'一级 3',
+					children:[{
+						id:7,
+						label:'二级3-1',
+						disabled:true
+					},{
+						id:8,
+						label:'二级3-2'
+					}]
+				}],
+				defaultProps: {
+					children: 'children',
+					label: 'label'
+				}
+			};
+		}
+	};
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

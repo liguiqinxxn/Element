@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-tabs v-model="activeName" @tab-click="handleClick">
+			<el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+			<el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+			<el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+			<el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+		</el-tabs>
+
+		<el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+			<el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+			<el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+			<el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+			<el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+		</el-tabs>
+
+		<el-tabs v-model="activeName3" type="border-card" @tab-click="handleClick">
+			<el-tab-pane name="first">
+			<span slot="label"><i class="el-icon-date"></i> 我的行程</span>我的行程
+			</el-tab-pane>
+			<el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+			<el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+			<el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+		</el-tabs>
+
+		<el-radio-group v-model="tabPosition" style="margin-bottom: 30px;">
+			<el-radio-button label="top">top</el-radio-button>
+			<el-radio-button label="right">right</el-radio-button>
+			<el-radio-button label="bottom">bottom</el-radio-button>
+			<el-radio-button label="left">left</el-radio-button>
+		</el-radio-group>
+
+		<el-tabs :tab-position="tabPosition" v-model="activeName4" @tab-click="handleClick" style="height:200px;">
+			<el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+			<el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+			<el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+			<el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+		</el-tabs>
+	</template>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				activeName:'second',
+				activeName2:'first',
+				activeName3:'third',
+				activeName4:'third',
+				tabPosition:'top'
+			};
+		},
+		methods:{
+			handleClick(tab,event){
+				console.log(tab,event);
+			}
+		}
+	};
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

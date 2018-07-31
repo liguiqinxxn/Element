@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-checkbox-group
+		  v-model="checkedCities1"
+		  :min="1"
+		  :max="2">
+		  <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+		</el-checkbox-group>
+	</template>
+</div>
+<script>
+	const cityOptions =['上海','北京','广州','深圳'];
+	var Main = {
+		data() {
+			return {
+				checkedCities1:['上海','北京'],
+				cities: cityOptions
+			};
+		}
+	};
+	var Ctor =Vue.extend(Main)
+	new Ctor().$mount('#app')
+</script>
+</body>
+</html>

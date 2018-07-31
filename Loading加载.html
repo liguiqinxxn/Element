@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-table v-loading="loading" 
+		element-loading-text="拼命加载中"
+		element-loading-spinner="el-icon-loading"
+		element-loading-background="rgba(0,0,0,0.8)"
+		:data="tableData" style="width: 100%">
+			<el-table-column prop="date" label="日期" width="180"></el-table-column>
+			<el-table-column prop="name" label="姓名" width="180"></el-table-column>
+			<el-table-column prop="address" label="地址"></el-table-column>
+		</el-table>
+	</template>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				tableData:[{
+					date:'2016-05-03',
+					name:'王小虎',
+					address:'上海市普陀区金沙江路 1518弄'
+				},{
+					date:'2016-05-02',
+					name:'王小虎',
+					address:'上海市普陀区金沙江路 1518弄'
+				},{
+					date:'2016-05-04',
+					name:'王小虎',
+					address:'上海市普陀区金沙江路 1518弄'
+				}],
+				loading:true
+			};
+		}
+	};
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+<style>
+	body{
+		margin: 0;
+	}
+</style>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+<!-- 引入组件库 -->
+<!-- <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+</head>
+<body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui@2.0.7/lib/index.js"></script>
+<div id="app">
+	<!-- <template> -->
+	<el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+	<img v-if="imageUrl" :src="imageUrl" class="avatar">
+	<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+	</el-upload>
+	<!-- </template> -->
+</div>
+<style>
+/*<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">*/
+/*<link rel="stylesheet" href="https://unpkg.com/element-ui@2.0.7/lib/theme-chalk/index.css">*/
+
+.avatar-uploader .el-upload {
+	border: 1px dashed #d9d9d9;
+	border-radius: 6px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+	border-color: #409eff;
+}
+.avatar-uploader-icon {
+	font-size: 28px;
+	color: #8c939d;
+	width: 178px;
+	height: 178px;
+	line-height: 178px;
+	text-align: center;
+}
+.avatar {
+	width:  178px;
+	height: 178px;
+	display: block;
+}
+</style>
+<script>
+	var Main = {
+		data(){
+			return{
+				imageUrl:''
+			};
+		},
+		methods: {
+			handleAvatarSuccess(res, file) {
+				this.imageUrl = URL.createObjectURL(file.raw);
+			},
+			beforeAvatarUpload(file) {
+				const isJPG =file.type ==='image/jpeg';
+				const isLt2M =file.size /1024 / 1024 <2;
+
+				if (!isJPG) {
+					this.$message.error('上传头像图片只能是JPG格式！');
+				}
+				if (!isLt2M) {
+					this.$message.error('上传头像图片大小不能超过2MB!');
+				}
+				return isJPG && isLt2M;
+			}
+		}
+	}
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

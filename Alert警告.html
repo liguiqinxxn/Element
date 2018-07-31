@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+	<el-alert title="成功提交的文案" type="success"></el-alert>
+	<el-alert title="消息提交的文案" type="info"></el-alert>
+	<el-alert title="警告提交的文案" type="warning" center show-icon></el-alert>
+	<el-alert title="错误提交的文案" type="error" center show-icon></el-alert>
+
+	<el-alert title="不可关闭的alert" type="success" :closable="false"></el-alert>
+	<el-alert title="自定义 close-text" type="info" close-text="知道了"></el-alert>
+	<el-alert title="设置了回调的alert" type="warning" @close="hello"></el-alert>
+
+	<el-alert title="带辅助性文字介绍" type="success" description="这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥......" show-icon></el-alert>
+		
+	</template>
+</div>
+<script>
+	var Main = {
+		methods:{
+			hello() {
+				alert('hello world!');
+			}
+		},
+		data(){
+			return{
+
+			}
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

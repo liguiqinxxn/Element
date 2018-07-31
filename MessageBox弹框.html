@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<el-button type="text" @click="open">点击打开Message Box</el-button>
+		<el-button type="text" @click="open2">点击打开Message Box</el-button>
+		<el-button type="text" @click="open3">点击打开Message Box</el-button>
+		<el-button type="text" @click="open4">点击打开Message Box</el-button>
+		<el-button type="text" @click="open5">点击打开Message Box</el-button>
+	</template>
+</div>
+<script>
+	var Main = {
+		methods: {
+			open() {
+				this.$alert('这是一段内容','标题名称',{
+					confirmButtonText:'确定',
+					callback: action =>{
+						this.$message({
+							type:'info',
+							message: `action: ${ action }`
+						});
+					}
+				});
+			},
+			open2(){
+				this.$confirm('此操作将永久删除该文件，是否继续？','提示',{
+					confirmButtonText:'确定',
+					cancelButtonText:'取消',
+					type:'warning',
+					center: true
+				}).then(()=>{
+					this.$message({
+						type:'success',
+						message:'删除成功！'
+					});
+				}).catch(() =>{
+					this.$message({
+						type:'info',
+						message:'已取消删除'
+					});
+				});
+			},
+			open3(){
+				this.$prompt('请输入邮箱','提示',{
+					confirmButtonText:'确定',
+					cancelButtonText:'取消',
+					inputPattern:/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+					inputErrorMessage:'邮箱格式不正确'
+				}).then(({value})=>{
+					this.$message({
+						type:'success',
+						message:'你的邮箱是：'+value
+					});
+				}).catch(()=>{
+					this.$message({
+						type:'info',
+						message:'取消输入'
+					});
+				});
+			},
+			open4(){
+				const h= this.$createElement;
+				this.$msgbox({
+					title:'消息',
+					message:h('p',null,[
+						h('span',null,'内容可以是'),
+						h('i',{style: 'color:teal'},'VNode')
+					]),
+					showCancelButton: true,
+					confirmButtonText:'确定',
+					cancelButtonText:'取消',
+					beforeClose: (action,instance,done) => {
+						if (action === 'confirm'){
+							instance.confirmButtonLoading =true;
+							instance.confirmButtonText ='执行中...';
+							setTimeout(()=>{
+								done();
+								setTimeout(() =>{
+									instance.confirmButtonLoading =false;
+								},300);
+							},3000);
+						} else {
+							done();
+						}
+					}
+				}).then(action =>{
+					this.$message({
+						type:'info',
+						message:'action: '+action
+					});
+				});
+			},
+			open5(){
+				this.$alert('<strong>这是<i>HTML</i>片段</strong>','HTML片段',{
+					dangerouslyUseHTMLString:true
+				});
+			}
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-badge :value="12" class="item">
+	  <el-button size="small">评论</el-button>
+	</el-badge>
+	<el-badge :value="3" class="item">
+	  <el-button size="small">回复</el-button>
+	</el-badge>
+
+	<el-badge :value="200" :max="99" class="item">
+	  <el-button size="small">评论</el-button>
+	</el-badge>
+	<el-badge :value="100" :max="10" class="item">
+	  <el-button size="small">回复</el-button>
+	</el-badge>
+
+	<el-badge value="new" class="item">
+	  <el-button size="small">评论</el-button>
+	</el-badge>
+	<el-badge value="hot" class="item">
+	  <el-button size="small">回复</el-button>
+	</el-badge>
+
+	<el-badge is-dot class="item" size="small">数据查询</el-badge>
+	<el-badge is-dot class="item">
+	  <el-button size="small" class="share-button" icon="el-icon-share" type="primary"></el-button>
+	</el-badge>
+
+	<el-dropdown  size="size" trigger="click">
+		<span class="el-dropdown-link">点我查看<i class="el-icon-caret-bottom el-icon-right"></i>
+		</span>
+		<el-dropdown-menu slot="dropdown">
+		  <el-dropdown-item class="clearfix">评论
+			<el-badge class="mark" :value="12"></el-badge>
+		  </el-dropdown-item>
+
+		  <el-dropdown-item class="clearfix">回复
+			<el-badge class="mark" :value="3"></el-badge>
+		  </el-dropdown-item>
+		</el-dropdown-menu>
+	</el-dropdown>
+</div>
+<script>
+// var Main = {
+// 		data(){
+// 			return{
+
+// 			}
+// 		}
+// 	}
+// var Ctor =Vue.extend(Main)
+// new Ctor().$mount('#app')
+new Vue().$mount('#app')
+</script>
+<style>
+	.item{
+		margin-top: 10px;
+		margin-right: 40px;
+	}
+</style>
+</body>
+</html>

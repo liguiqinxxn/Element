@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-card class="box-card">
+		<div slot="header" class="clearfix">
+			<span>卡片名称</span>
+			<el-button style="float:right;padding:3px 0" type="text">操作按钮</el-button>
+		</div>
+		<div v-for="o in 4" :key="o" class="text item">{{'列表内容'+ o}}</div>
+	</el-card>
+	<br/><br/>
+	<el-card class="box-card">
+		<div v-for="o in 4" :key="o" class="text item">
+			{{'列表内容' + o}}
+		</div>
+	</el-card>
+	<br/><br/>
+	<el-col :span="8" v-for="(o,index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+		<el-card :body-style="{pading: '0px' }">
+		<img src="smile.jpg" class="image">
+		<div style="padding: 14px;">
+			<span>微笑</span>
+			<div class="bottom clearfix">
+				<time class="time">{{ currentDate }}</time>
+				<el-button type="text" class="button">操作按钮</el-button>
+			</div>
+		</div>
+		</el-card>
+	</el-col>
+</div>
+<style>
+	.text{
+		font-size: 14px;
+	}
+	.item{
+		margin-bottom: 18px;
+	}
+	.clearfix:before,
+	.clearfix:after{
+		display: table;
+		content: "";
+	}
+	.clearfix:after {
+		clear: both;
+	}
+	.box-card{
+		width: 480px;
+	}
+	.time{
+		font-size: 13px;
+		color: #999;
+	}
+	.bottom {
+		margin-top: 13px;
+		line-height: 12px;
+	}
+	.button {
+		padding: 0;
+		float: right;
+	}
+	.image {
+		width: 100%;
+		display: block;
+	}
+</style>
+<script>
+	var Main = {
+		data(){
+			return{
+				currentDate: new Date()
+			};
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

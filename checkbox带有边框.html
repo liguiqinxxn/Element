@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+		<div>
+			<el-checkbox v-model="checked3" label="备选项1" border>
+			</el-checkbox>
+			<el-checkbox v-model="checked4" label="备选项2" border>
+			</el-checkbox>
+		</div>
+		<div style="margin-top:20px">
+			<el-checkbox v-model="checked5" label="备选项1" border size="medium">
+			</el-checkbox>
+			<el-checkbox v-model="checked6" label="备选项2" border size="medium">
+			</el-checkbox>
+		</div>
+		<div style="margin-top:20px" >
+		  <el-checkbox-group v-model="checkBoxGroup5">
+			<el-checkbox  label="备选项1" border size="small">
+			</el-checkbox>
+			<el-checkbox  label="备选项2" border size="small" disabled>
+			</el-checkbox>
+			</el-checkbox-group>
+		</div>
+		<div style="margin-top:20px" >
+		  <el-checkbox-group v-model="checkBoxGroup6" size="mini" disabled>
+			<el-checkbox label="备选项1" border>
+			</el-checkbox>
+			<el-checkbox label="备选项2" border>
+			</el-checkbox>
+			</el-checkbox-group>
+		</div>
+	</template>
+</div>
+<script>
+	var Main = {
+		data(){
+			return{
+				checked3:true,
+				checked4:false,
+				checked5:false,
+				checked6:true,
+				checkBoxGroup5: [],
+				checkBoxGroup6:[]
+			};
+		}
+	}
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+</body>
+</html>

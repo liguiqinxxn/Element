@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习Element</title>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<template>
+	  <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+	  <div style="margin: 15px 0;"></div>
+	  <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+	    <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+	  </el-checkbox-group>
+	</template>
+</div>
+<script>
+	const cityOptions = ['上海', '北京', '广州', '深圳'];
+	var Main = {
+		data () {
+			return {
+				checkAll: false,
+				checkedCities:['上海','北京'],
+				cities: cityOptions,
+				isIndeterminate: true
+			};
+		},
+		methods: {
+			handleCheckAllChange(val){
+				this.checkedCities = val ? cityOptions:[];
+				this.isIndeterminate =false;
+			},
+			handleCheckedCitiesChange(value) {
+				let checkedCount = value.length;
+				this.checkAll =checkedCount ===this.cities.length;
+				this.isIndeterminate =checkedCount > 0 && checkedCount <this.cities.length;
+			}
+		}
+	};
+var Ctor =Vue.extend(Main)
+new Ctor().$mount('#app')
+</script>
+
+</body>
+</html>
